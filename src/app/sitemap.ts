@@ -1,0 +1,2 @@
+import type { MetadataRoute } from "next";
+export default function sitemap():MetadataRoute.Sitemap{const base=process.env.NEXT_PUBLIC_SITE_URL||"https://inzoziacademy.rw";return ["","about","academics","news","events","gallery","team","admissions","faq","contact"].map(p=>({url:`${base}/${p}`,lastModified:new Date(),changeFrequency:p==="news"||p==="events"?"weekly":"monthly",priority:p===""?1:.7}));}

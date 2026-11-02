@@ -1,0 +1,3 @@
+import HeaderClient from "@/components/HeaderClient";import { getPublished } from "@/lib/content";import { getSettings } from "@/lib/settings";
+const defaults=[{label:"Our story",href:"/about"},{label:"Academics",href:"/academics"},{label:"News & stories",href:"/news"},{label:"School life",href:"/gallery"},{label:"Our team",href:"/team"},{label:"FAQs",href:"/faq"}];
+export default async function Header(){const [items,settings]=await Promise.all([getPublished("navigation_items",20),getSettings()]);return <HeaderClient links={items.length?items.filter(x=>x.href!=="/admissions").map(x=>({label:x.label,href:x.href})):defaults} phone={settings.phone}/>}
